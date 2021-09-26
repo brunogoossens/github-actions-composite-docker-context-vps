@@ -1,6 +1,10 @@
 name: "Docker context vps"
 description: "Set up docker context for VPS"
 inputs:
+  shell:
+    description: 'shell to use'
+    required: false
+    default: bash
   ssh_user: 
     description:  'ssh user'
     required: true
