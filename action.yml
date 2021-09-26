@@ -1,10 +1,6 @@
 name: "Docker context vps"
 description: "Set up docker context for VPS"
 inputs:
-  shell:
-    description: 'shell to use'
-    required: false
-    default: bash
   ssh_user: 
     description:  'ssh user'
     required: true
@@ -18,8 +14,10 @@ runs:
   using: "composite"
   steps:
     - name: fix docker compose with context setup
+      shell: bash
       run: pip install docker-compose
     - name: Configure SSH
+      shell: bash
       run: |
         mkdir -p ~/.ssh/
         echo "${{ inputs.ssh_key }} " > ~/.ssh/id_rsa
@@ -32,6 +30,7 @@ runs:
           StrictHostKeyChecking no
         END
     - name: Docker context create and use
+      shell: bash
       run: |
         docker context create server --docker host=ssh://server
         docker context use server
