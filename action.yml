@@ -13,9 +13,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: fix docker compose with context setup
-      shell: bash
-      run: pip install docker-compose
     - name: Configure SSH
       shell: bash
       run: |
